@@ -23,13 +23,12 @@ spec:
               value: awms
             - name: POSTGRES_PASSWORD
               value: therootpassword
-          envFrom:
-            - configMapRef:
-                name: postgres-secret # Using the ConfigMap postgres-secret
+            - name: POSTGRES_DB
+              value: awms
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdata
       volumes:
         - name: postgresdata
           persistentVolumeClaim:
-            claimName: postgres-volume-claim
+            claimName: postgres-pvc
