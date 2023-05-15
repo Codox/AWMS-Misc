@@ -10,3 +10,5 @@ sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
 microk8s kubectl -n kube-system edit service kubernetes-dashboard
 microk8s kubectl -n kube-system get services
+
+microk8s kubectl -n kube-system describe secret $(microk8s kubectl -n kube-system get secret | grep kubernetes-dashboard-token | awk '{print $1}')
