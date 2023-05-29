@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awms-hyperlogic-keycloak-service
+spec:
+  selector:
+    app: awms-hyperlogic-keycloak
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
